@@ -1,11 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import PeaksIndex from '../views/PeaksIndex.vue'
+import PeaksShow from '../views/PeaksShow.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/peaks',
+    name: 'peaks-index',
+    component: PeaksIndex
+  },
+  {
+    path: '/peaks/:id',
+    name: 'peaks-show',
+    component: PeaksShow
   },
   {
     path: '/about',
