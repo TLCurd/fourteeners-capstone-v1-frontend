@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PeaksIndex from '../views/PeaksIndex.vue'
 import PeaksShow from '../views/PeaksShow.vue'
+import MapView from '../views/MapView.vue'
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/peaks/:id',
     name: 'peaks-show',
     component: PeaksShow
+  },
+  {
+    path: '/14ers-map',
+    name: '14ers-map',
+    component: MapView
   },
   {
     path: '/about',

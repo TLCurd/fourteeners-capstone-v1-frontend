@@ -2,7 +2,8 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/peaks">14ers</router-link>
+    <router-link to="/peaks">Browse all the Peaks</router-link> |
+    <router-link to="/14ers-map">Map of the Peaks</router-link>
   </nav>
   <router-view />
 </template>
