@@ -1,11 +1,11 @@
 <script>
 import axios from "axios"
-
+import image from "/images/rockyMountains.png"
 export default {
   data: function () {
     return {
       message: "Colorado's Official (and unofficial!) 14ers",
-      // image: require(`@/assets/images/Rocky-Mountains.jpg`)
+      image: image
     };
   },
   created: function () { },
@@ -18,17 +18,23 @@ export default {
   <div class="home">
     <h1>{{ message }}</h1>
   </div>
-  <!-- <a href="/peaks" class="image"><img v-bind:src="require('.assets/Rocky-Mountains.jpg')" /></a> -->
+  <a href="/peaks" class="image"><img v-bind:src="`${image}`" /></a>
 
 
-  <div id="app">
-    <img src="/src/assets/images/rockyMountains.png" />
-  </div>
+  <!-- <div id="app">
+    <img src="~/images/rockyMountains.png" />
+  </div> -->
 </template >
 
   <style>
 body {
   font-family: Futura, Trebuchet MS, Arial, sans-serif;
   /* background-image: url('./assets/Rocky-Mountains.jpg') */
+}
+
+;
+
+img {
+  width: 400px
 }
 </style>
