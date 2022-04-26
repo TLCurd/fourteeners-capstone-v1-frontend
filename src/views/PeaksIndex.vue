@@ -40,7 +40,7 @@ export default {
 
 <style>
 img {
-  width: 300;
+  width: 800px;
   height: 400px
 }
 </style>
