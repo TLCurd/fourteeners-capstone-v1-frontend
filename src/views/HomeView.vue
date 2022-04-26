@@ -27,14 +27,17 @@ export default {
 </template >
 
   <style>
-body {
+/* body {
   font-family: Futura, Trebuchet MS, Arial, sans-serif;
   /* background-image: url('./assets/Rocky-Mountains.jpg') */
+/* } */
+
+*/ body {
+  font-family: Futura, Trebuchet MS, Arial, sans-serif;
 }
 
-;
-
 img {
-  width: 400px
+  width: 800px;
+  height: 600px;
 }
 </style>
