@@ -14,6 +14,19 @@
         <li class="nav-item">
           <a class="nav-link" href="/14ers-map">View the 14ers on a map |</a>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Colorado's Famed 14ers
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/peaks">Browse your missions</a>
+            <a class="dropdown-item" href="/login">Sign-in</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Log-out</a>
+          </div>
+        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Authentication

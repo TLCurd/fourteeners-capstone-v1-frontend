@@ -5,11 +5,13 @@ export default {
   data: function () {
     return {
       message: "Welcome to the map of Colorado's 14ers!",
-      peaks: []
+      peaks: [],
+      recAreas: []
     };
   },
   mounted: function () {
     this.peaksIndex();
+    this.recAreasIndex();
     this.makeMap();
   },
   methods: {
@@ -20,13 +22,20 @@ export default {
         this.peaks = response.data
       })
     },
+    recAreasIndex: function () {
+      axios.get(`http://localhost:3000/rec_areas.json`).then(response => {
+        console.log('indexing rec areas...')
+        console.log(response.data);
+        this.recAreas = response.data
+      })
+    },
     makeMap: function () {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v8', // style URL
         center: [-105.634722, 38.985833], // starting position [lng, lat]
-        zoom: 7 // starting zoom
+        zoom: 6.5 // starting zoom
       });
       axios.get(`http://localhost:3000/peaks.json`).then(response => {
         console.log(response.data);
@@ -49,7 +58,23 @@ export default {
               )
             )
             .addTo(map)
-        })
+        }),
+          this.recAreas.forEach(recArea => {
+            console.log(this.recAreas.count);
+            description = `<p> <a href="http://localhost:8080/rec_areas/${recArea.id}" <strong>${recArea.name}</strong></a> 
+          </p>`
+            const marker = new mapboxgl.Marker({
+              color: "blue",
+              rotation: 0,
+            })
+              .setLngLat([recArea.long, recArea.lat])
+              .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
+                .setHTML(
+                  description
+                )
+              )
+              .addTo(map)
+          })
       });
       const nav = new mapboxgl.NavigationControl({
         visualizePitch: true,
