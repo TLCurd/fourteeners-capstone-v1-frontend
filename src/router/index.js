@@ -2,9 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PeaksIndex from '../views/PeaksIndex.vue'
 import PeaksShow from '../views/PeaksShow.vue'
-import MapView from '../views/MapView.vue'
+import PeaksMap from '../views/PeaksMap.vue'
 import RecAreasIndex from '../views/RecAreasIndex.vue'
 import RecAreasShow from '../views/RecAreasShow.vue'
+import RecAreasMap from '../views/RecAreasMap.vue'
 
 const routes = [
   {
@@ -23,9 +24,9 @@ const routes = [
     component: PeaksShow
   },
   {
-    path: '/14ers-map',
+    path: '/peaks/map',
     name: '14ers-map',
-    component: MapView
+    component: PeaksMap
   },
   {
     path: '/rec_areas',
@@ -36,6 +37,11 @@ const routes = [
     path: '/rec_areas/:id',
     name: 'rec-areas-show',
     component: RecAreasShow
+  },
+  {
+    path: '/rec_areas/map',
+    name:'rec-areas-map',
+    component: RecAreasMap
   },
   {
     path: '/about',

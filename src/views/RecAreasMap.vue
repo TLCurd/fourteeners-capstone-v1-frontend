@@ -4,24 +4,24 @@ import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
 export default {
   data: function () {
     return {
-      message: "Welcome to the map of Colorado's 14ers!",
+      message: "Welcome to the map of Colorado's rec areas!",
       peaks: [],
       recAreas: []
     };
   },
   mounted: function () {
-    this.peaksIndex();
+    // this.peaksIndex();
     this.recAreasIndex();
     this.makeMap();
   },
   methods: {
-    peaksIndex: function () {
-      console.log('indexing Peaks...');
-      axios.get(`http://localhost:3000/peaks.json`).then(response => {
-        console.log(response.data);
-        this.peaks = response.data
-      })
-    },
+    // peaksIndex: function () {
+    //   console.log('indexing Peaks...');
+    //   axios.get(`http://localhost:3000/peaks.json`).then(response => {
+    //     console.log(response.data);
+    //     this.peaks = response.data
+    //   })
+    // },
     recAreasIndex: function () {
       axios.get(`http://localhost:3000/rec_areas.json`).then(response => {
         console.log('indexing rec areas...')
@@ -37,44 +37,28 @@ export default {
         center: [-105.634722, 38.985833], // starting position [lng, lat]
         zoom: 6.5 // starting zoom
       });
-      axios.get(`http://localhost:3000/peaks.json`).then(response => {
+      axios.get(`http://localhost:3000/rec_areas.json`).then(response => {
         console.log(response.data);
-        this.peaks = response.data;
+        this.recAreas = response.data;
         var description = "";
-        this.peaks.forEach(peak => {
-          console.log(this.peaks.count);
-          description = `<strong>${peak.name}</strong><p> <a href="http://localhost:8080/peaks/${peak.id}"><img src=${peak.photo} class="img-fluid" target="_blank" title="Learn more about ${peak.name}" ></a> <p>Located in the ${peak.range} mountain range</p>
-          <p>Elevation:${peak.elevation}</p>
-          <p>Official 14er: ${peak.official_14er}</p>
-          <p>The summit is ${peak.prominence} above the nearest peak.</p></p>`;
+        this.recAreas.forEach(recArea => {
+          console.log(this.recAreas.count);
+          description = `<p> <a href="http://localhost:8080/rec_areas/${recArea.id}" <strong>${recArea.name}</strong></a> 
+          </p>
+          <br>
+          <b>Directions:</b> ${recArea.directions} `
           const marker = new mapboxgl.Marker({
-            color: "red",
+            color: "blue",
             rotation: 0,
           })
-            .setLngLat([peak.long, peak.lat])
+            .setLngLat([recArea.long, recArea.lat])
             .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
               .setHTML(
                 description
               )
             )
             .addTo(map)
-        }),
-          this.recAreas.forEach(recArea => {
-            console.log(this.recAreas.count);
-            description = `<p> <a href="http://localhost:8080/rec_areas/${recArea.id}" <strong>${recArea.name}</strong></a> 
-          </p>`
-            const marker = new mapboxgl.Marker({
-              color: "blue",
-              rotation: 0,
-            })
-              .setLngLat([recArea.long, recArea.lat])
-              .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
-                .setHTML(
-                  description
-                )
-              )
-              .addTo(map)
-          })
+        })
       });
       const nav = new mapboxgl.NavigationControl({
         visualizePitch: true,
