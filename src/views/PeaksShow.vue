@@ -34,8 +34,8 @@ export default {
     <hr>
     <p>{{ peak.name }}</p>
     <p>Located in the {{ peak.range }} mountain range</p>
-    <p>{{ peak.elevation }}</p>
-    <p>{{ peak.official_14er }}</p>
+    <p>This trail tops out at {{ peak.elevation }}</p>
+    <p>Official: {{ peak.official_14er }}</p>
     <p>The summit is {{ peak.prominence }} above the nearest peak.</p>
     <p>Typically, the majority of hikers use the {{ peak.route }} to reach the summit. In doing so, you can expect to
       hike a total of roughly {{ peak.distance }}, while gaining approximately {{ peak.elevation_gain }} over the course
