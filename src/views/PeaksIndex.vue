@@ -5,7 +5,8 @@ export default {
   data: function () {
     return {
       message: "Colorado's Official (and unofficial!) 14ers",
-      peaks: []
+      peaks: [],
+      searchTerm: ""
     };
   },
   created: function () {
@@ -19,31 +20,60 @@ export default {
         this.peaks = response.data
       })
     },
+    filterPeaks: function () {
+      return this.peaks.filter(peak => {
+        var lowerTitle = peak.name.toLowerCase();
+        var lowerSearchTerm = this.searchTerm.toLowerCase();
+        return lowerTitle.includes(lowerSearchTerm);
+      })
+    }
   },
 };
 </script>
 
 <template>
-  <div class="home">
+  <div class="peaks-index">
     <h1>{{ message }}</h1>
-    <div v-for="peak in peaks" v-bind:key="peak.id"><img v-bind:src="peak.photo" class="img-fluid">
-      <h2>
-        Trail Summit: {{ peak.name }}
-        <br>
-        Height: {{ peak.elevation }}
-      </h2>
+    <div class="row">
+      <p>Search: <input type="text" v-model="searchTerm"> </p>
+      <div class="col-sm-4 " v-for="peak in filterPeaks()">
+        <div class="card">
+          <img v-bind:src="peak.photo" class="img-fluid" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">{{ peak.name }}</h4>
+            <h5>
+              Elevation at summit: {{ peak.elevation }}
+            </h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Difficulty: </b>{{ peak.difficulty }}</li>
+            <li class="list-group-item"><b>Elevation at Summit</b>{{ peak.elevation }}</li>
+            <li class="list-group-item"><b>Trail Length: </b>{{ peak.distance }}</li>
+          </ul>
+          <div class="card-body">
+            <a v-bind:href="`/peaks/${peak.id}`" class="btn btn-outline-dark" role="button">More information</a>
+          </div>
+        </div>
 
 
-      <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
 
-      <a v-bind:href="`/peaks/${peak.id}`" class="btn btn-outline-dark" role="button">More information</a>
-      <!-- <router-link v-bind:to="`/peaks/${peak.id}`">Find out more about {{ peak.name }}</router-link> -->
-      <hr>
+
+        <!-- DIFFERENT ATTEMPTS FOR BUTTONS OUTSIDE OF BS CARD COMPONENT  -->
+        <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
+        <!-- <a v-bind:href="`/peaks/${peak.id}`" class="btn btn-outline-dark" role="button">More information</a> -->
+        <!-- <router-link v-bind:to="`/peaks/${peak.id}`">Find out more about {{ peak.name }}</router-link> -->
+        <hr>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
+body {
+  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+  background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/dynamic-style.png')
+}
+
 /* img {
   width: 400px;
   height: 400px
