@@ -44,6 +44,8 @@ export default {
     <p>The difficulty of the trail is rated as {{ peak.difficulty }}.</p>
     <p>The amount of traffic this trail receives in a given year can vary from {{ peak.traffic_low }}, to
       {{ peak.traffic_high }}.</p>
+    <hr>
+    <a v-bind:href="`/peaks`" class="btn btn-outline-dark" role="button">Back to all 14ers</a>
   </div>
 </template>
 
