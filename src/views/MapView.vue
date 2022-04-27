@@ -34,7 +34,7 @@ export default {
         var description = "";
         this.peaks.forEach(peak => {
           console.log(this.peaks.count);
-          description = `<strong>${peak.name}</strong><p> <a href="http://localhost:8080/peaks/${peak.id}"><img src=${peak.photo} target="_blank" title="Learn more about ${peak.name}"></a> <p>Located in the ${peak.range} mountain range</p>
+          description = `<strong>${peak.name}</strong><p> <a href="http://localhost:8080/peaks/${peak.id}"><img src=${peak.photo} class="img-fluid" target="_blank" title="Learn more about ${peak.name}" ></a> <p>Located in the ${peak.range} mountain range</p>
           <p>Elevation:${peak.elevation}</p>
           <p>Official 14er: ${peak.official_14er}</p>
           <p>The summit is ${peak.prominence} above the nearest peak.</p></p>`;
@@ -75,9 +75,9 @@ export default {
 </template>
 
 <style>
-img {
-  width: 200px
-}
+/* .img {
+  width: 50px
+} */
 
 .mapboxgl-popup {
   max-width: 400px;

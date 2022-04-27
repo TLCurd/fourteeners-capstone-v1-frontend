@@ -26,7 +26,7 @@ export default {
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <div v-for="peak in peaks" v-bind:key="peak.id"><img v-bind:src="peak.photo">
+    <div v-for="peak in peaks" v-bind:key="peak.id"><img v-bind:src="peak.photo" class="img-fluid">
       <h2>
         Trail Summit: {{ peak.name }}
         <br>
@@ -39,8 +39,8 @@ export default {
 </template>
 
 <style>
-img {
-  width: 800px;
-  height: 800px
-}
+/* img {
+  width: 400px;
+  height: 400px
+} */
 </style>

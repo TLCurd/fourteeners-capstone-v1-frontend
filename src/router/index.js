@@ -3,11 +3,12 @@ import HomeView from '../views/HomeView.vue'
 import PeaksIndex from '../views/PeaksIndex.vue'
 import PeaksShow from '../views/PeaksShow.vue'
 import MapView from '../views/MapView.vue'
+import RecAreasIndex from '../views/RecAreasIndex.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'home-view',
     component: HomeView
   },
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/14ers-map',
     name: '14ers-map',
     component: MapView
+  },
+  {
+    path: '/rec_areas',
+    name: 'rec-areas',
+    component: RecAreasIndex
   },
   {
     path: '/about',
