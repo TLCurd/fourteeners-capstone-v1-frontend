@@ -32,8 +32,13 @@ export default {
         <br>
         Height: {{ peak.elevation }}
       </h2>
-      <br>
-      <router-link v-bind:to="`/peaks/${peak.id}`">Find out more about {{ peak.name }}</router-link>
+
+
+      <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
+
+      <a v-bind:href="`/peaks/${peak.id}`" class="btn btn-outline-dark" role="button">More information</a>
+      <!-- <router-link v-bind:to="`/peaks/${peak.id}`">Find out more about {{ peak.name }}</router-link> -->
+      <hr>
     </div>
   </div>
 </template>
