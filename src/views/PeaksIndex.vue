@@ -22,9 +22,9 @@ export default {
     },
     filterPeaks: function () {
       return this.peaks.filter(peak => {
-        var lowerTitle = peak.name.toLowerCase();
+        var lowerName = peak.name.toLowerCase();
         var lowerSearchTerm = this.searchTerm.toLowerCase();
-        return lowerTitle.includes(lowerSearchTerm);
+        return lowerName.includes(lowerSearchTerm);
       })
     }
   },
