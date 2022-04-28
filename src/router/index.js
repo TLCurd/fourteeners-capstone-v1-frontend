@@ -7,6 +7,8 @@ import RecAreasIndex from '../views/RecAreasIndex.vue'
 import RecAreasShow from '../views/RecAreasShow.vue'
 import RecAreasMap from '../views/RecAreasMap.vue'
 import SignUp from '../views/SignUp.vue'
+import LoginView from '../views/LoginView.vue'
+import LogoutView from '../views/LogoutView.vue'
 
 const routes = [
   {
@@ -44,9 +46,20 @@ const routes = [
     name:'rec-areas-map',
     component: RecAreasMap
   },
-  { path: "/signup", 
+  { 
+    path: "/signup", 
     name: "signup", 
     component: SignUp 
+  },
+  {
+    path: "/login", 
+    name: "login", 
+    component: LoginView
+  },
+  {
+    path: "/logout", 
+    name: "logout", 
+    component: LogoutView
   },
   {
     path: '/about',

@@ -47,10 +47,10 @@
               aria-haspopup="true" aria-expanded="false">Account
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/signup">Join the crew!</a>
-              <a class="dropdown-item" href="/login">Sign-in</a>
+              <a class="dropdown-item" href="/signup"><strong>Join the crew!</strong></a>
+              <a class="dropdown-item" href="/login"><b>Sign-in</b></a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/logout">Log-out</a>
+              <a class="dropdown-item" href="/logout"><b>Log-out</b></a>
             </div>
           </li>
           <!-- <li class="nav-item">
