@@ -37,7 +37,7 @@
               <a class="dropdown-item" href="/rec_areas">Browse the Recreation Areas</a>
               <a class="dropdown-item" href="/rec_areas/map">View Recreation areas on Map</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/logout">Log-out</a>
+              <a class="dropdown-item" href="/activities">Explore by Activity</a>
             </div>
           </li>
 
@@ -57,10 +57,10 @@
           <a class="nav-link" href="/rec_areas">Colorado Recreation Areas</a>
         </li> -->
         </ul>
-        <form class="d-flex">
+        <!-- <form class="d-flex">
           <input class="form-control mr-me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form> -->
       </div>
     </div>
   </nav>

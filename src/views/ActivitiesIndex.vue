@@ -4,7 +4,7 @@ import axios from "axios"
 export default {
   data: function () {
     return {
-      message: "Colorado's Outdoor Recreation Areas",
+      message: "Activities Offered at Colorado's Outdoor Recreation Areas",
       activities: []
     };
   },
@@ -26,22 +26,23 @@ export default {
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
+
     <div v-for="activity in activities" v-bind:key="activity.id">
       <!-- <img v-bind:src="recArea.photo"> -->
-      <h2>
-        Activity: {{ activity.name }}
-        <br>
+      <!-- <h2>
+        activity: {{ activity.name }}
 
-      </h2>
-      <p>About: {{ activity.rec_areas }}</p>
+
+      </h2> -->
+
       <!-- <div v-for=" activity in recArea.activities">
         <p>Activities: {{ activity }}</p>
       </div> -->
       <br>
-      <router-link v-bind:to="`/activities/${activity.id}`">View a list of recreation areas where you can find {{
+      <router-link v-bind:to="`/activities/${activity.id}`">{{
           activity.name
-      }}.</router-link>
-      <hr>
+      }} </router-link>
+      <!-- <hr> -->
     </div>
   </div>
 </template>

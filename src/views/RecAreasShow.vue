@@ -35,9 +35,10 @@ export default {
     <hr>
     <p><b>About {{ recArea.name }}:</b> {{ recArea.description }}</p>
     <p> <b>Activities: </b>
-    <div v-for=" thing in recArea.activities">
+    <div v-for=" activity in recArea.activities">
+      <li><a v-bind:href="`/activities/${activity[1].toString()}`">{{ activity[0].toString() }}</a> </li>
       <!-- <li><a v-bind:href="`/activities/${activity.id}`">{{ thing }}</a> </li> -->
-      <li>{{ thing }}</li>
+
     </div>
     </p>
     <p><b>Getting there:</b> {{ recArea.directions }}</p>
