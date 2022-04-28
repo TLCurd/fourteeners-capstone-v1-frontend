@@ -33,10 +33,34 @@ export default {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v8', // style URL
+        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y', // style URL
         center: [-105.634722, 38.985833], // starting position [lng, lat]
-        zoom: 6.5 // starting zoom
+        zoom: 6.5, // starting zoom
+        pitch: 70
       });
+
+      map.on('load', () => {
+        map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 14
+        });
+        // add the DEM source as a terrain layer with exaggerated height
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+        // add a sky layer that will show when the map is highly pitched
+        map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+            'sky-type': 'atmosphere',
+            'sky-atmosphere-sun': [0.0, 0.0],
+            'sky-atmosphere-sun-intensity': 15
+          }
+        });
+      });
+
       axios.get(`http://localhost:3000/peaks.json`).then(response => {
         console.log(response.data);
         this.peaks = response.data;
@@ -46,7 +70,7 @@ export default {
           description = `<strong>${peak.name}</strong><p> <a href="http://localhost:8080/peaks/${peak.id}"><img src=${peak.photo} class="img-fluid" target="_blank" title="Learn more about ${peak.name}" ></a> <p>Located in the ${peak.range} mountain range</p>
           <p>Elevation:${peak.elevation}</p>
           <p>Official 14er: ${peak.official_14er}</p>
-          <p>The summit is ${peak.prominence} above the nearest peak.</p></p>`;
+          <p>The summit is ${peak.prominence} above the nearest peak.</p>`;
           const marker = new mapboxgl.Marker({
             color: "red",
             rotation: 0,
@@ -81,8 +105,8 @@ export default {
         showZoom: true,
         showCompass: true
       });
-      map.addControl(nav, 'bottom-right');
 
+      map.addControl(nav, 'bottom-right');
     }
   },
 };
@@ -94,7 +118,7 @@ export default {
     <hr>
     <!-- {{ peaks }} -->
     <!-- <button v-on:click="makeMap()">Make Map</button> -->
-    <div id='map' style='width: 1000px; height: 800px;'></div>
+    <div id='map' style='width: auto; height: 850px;'></div>
 
   </div>
 </template>
