@@ -29,8 +29,10 @@ export default {
 
 <template>
   <div class="activities-show">
-    <h1>So you're interested in {{ activity.name }}? Well then have a look at all the recreation areas that you can find
-      this activity!</h1>
+    <h1>So you're interested in {{ activity.name }}?</h1>
+    <br>
+    <h3> Well then have a look at all the recreation areas that you can find
+      this activity!</h3>
     <br>
     <!-- <img v-bind:src="activity.photo" class="img-fluid"> -->
     <hr>

@@ -1,5 +1,6 @@
 <script>
 import axios from "axios"
+import mapboxgl from 'mapbox-gl'
 
 export default {
   data: function () {
@@ -13,6 +14,10 @@ export default {
     console.log("in created...");
     this.showPeak()
   },
+  mounted: function () {
+    console.log("in mounted...");
+    this.makeMap()
+  },
   methods: {
     showPeak: function () {
       console.log("showing peak...");
@@ -20,6 +25,54 @@ export default {
       axios.get(`http://localhost:3000/peaks/${this.$route.params.id}.json`).then(response => {
         console.log(response.data);
         this.peak = response.data;
+      });
+    },
+    makeMap: function () {
+      console.log('making map...');
+      mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
+      const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y', // style URL
+        center: [-105.634722, 38.985833], // starting position [lng, lat]
+        zoom: 6.5, // starting zoom
+        pitch: 70
+      });
+      map.on('load', () => {
+        map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 14
+        });
+        // add the DEM source as a terrain layer with exaggerated height
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+        // add a sky layer that will show when the map is highly pitched
+        map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+            'sky-type': 'atmosphere',
+            'sky-atmosphere-sun': [0.0, 0.0],
+            'sky-atmosphere-sun-intensity': 15
+          }
+        });
+      });
+      axios.get(`http://localhost:3000/peaks/${this.$route.params.id}.json`).then(response => {
+        console.log(response.data);
+        this.peak = response.data;
+        var description = "";
+        const marker = new mapboxgl.Marker({
+          color: "red",
+          rotation: 0,
+        })
+          .setLngLat([peak.long, peak.lat])
+          .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
+            .setHTML(
+              description
+            )
+          )
+          .addTo(map)
       });
     }
   },
@@ -31,6 +84,8 @@ export default {
     <h1>All about {{ peak.name }}</h1>
     <br>
     <img v-bind:src="peak.photo" class="img-fluid">
+    <hr>
+    <div id='map' style='width: auto; height: 850px;'></div>
     <hr>
     <p>{{ peak.name }}</p>
     <p>Located in the {{ peak.range }} mountain range</p>
