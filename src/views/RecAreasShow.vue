@@ -21,6 +21,7 @@ export default {
         console.log(response.data);
         this.recArea = response.data;
       });
+      axios.get('')
     }
   },
 };
@@ -33,6 +34,12 @@ export default {
     <!-- <img v-bind:src="recArea.photo"> -->
     <hr>
     <p><b>About {{ recArea.name }}:</b> {{ recArea.description }}</p>
+    <p> <b>Activities: </b>
+    <div v-for=" thing in recArea.activities">
+      <!-- <li><a v-bind:href="`/activities/${activity.id}`">{{ thing }}</a> </li> -->
+      <li>{{ thing }}</li>
+    </div>
+    </p>
     <p><b>Getting there:</b> {{ recArea.directions }}</p>
     <p>{{ recArea.official_14er }}</p>
     <p><b>Contact Information:</b>
