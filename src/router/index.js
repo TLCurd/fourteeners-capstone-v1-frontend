@@ -6,6 +6,7 @@ import PeaksMap from '../views/PeaksMap.vue'
 import RecAreasIndex from '../views/RecAreasIndex.vue'
 import RecAreasShow from '../views/RecAreasShow.vue'
 import RecAreasMap from '../views/RecAreasMap.vue'
+import SignUp from '../views/SignUp.vue'
 
 const routes = [
   {
@@ -42,6 +43,10 @@ const routes = [
     path: '/rec_areas/map',
     name:'rec-areas-map',
     component: RecAreasMap
+  },
+  { path: "/signup", 
+    name: "signup", 
+    component: SignUp 
   },
   {
     path: '/about',
