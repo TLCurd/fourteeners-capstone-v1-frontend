@@ -90,7 +90,7 @@ export default {
 
 <template>
   <div class="peaks-show">
-    <h1>All about {{ peak.name }}</h1>
+    <h1>Colorado 14er #{{ peak.id }} {{ peak.name }}</h1>
     <br>
     <img v-bind:src="peak.photo" class="img-fluid">
 
@@ -110,9 +110,10 @@ export default {
       {{ peak.traffic_high }}.</p>
     <hr>
     <button v-on:click="makeMap()">See the peak on a map
-    </button>
-    <br>
-    <a v-bind:href="`/peaks`" class="btn btn-outline-dark" role="button">Back to all 14ers</a>
+    </button><br>
+    <a v-bind:href="`/peaks`" class="btn btn-warning" role="button">Back to all 14ers</a>
+    <a v-bind:href="`/peaks/${this.peak.id}`" class="btn btn-danger" role="button">Close Map</a>
+    <a v-bind:href="`/peak/map`" class="btn btn-info" role="button">Map of all 14ers</a>
     <div id='map' style='width: auto; height: 850px;'></div>
 
   </div>

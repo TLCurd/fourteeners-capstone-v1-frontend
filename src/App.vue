@@ -22,7 +22,7 @@
               aria-haspopup="true" aria-expanded="false">Colorado's Famed 14ers
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/peaks">Browse your missions</a>
+              <a class="dropdown-item" href="/peaks">Browse The 14ers</a>
               <a class="dropdown-item" href="/peaks/map">View Peaks on Map</a>
             </div>
           </li>

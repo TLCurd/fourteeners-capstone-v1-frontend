@@ -10,7 +10,8 @@ export default {
   },
   created: function () {
     console.log("in created...");
-    this.showRecArea()
+    this.showRecArea();
+    // this.makeMap()
   },
   mounted: function () {
     console.log("in mounted...");
@@ -93,7 +94,8 @@ export default {
     <p><b>About {{ recArea.name }}:</b> {{ recArea.description }}</p>
     <p> <b>Activities: </b>
     <div v-for=" activity in recArea.activities">
-      <li><a v-bind:href="`/activities/${activity[1].toString()}`">{{ activity[0].toString() }}</a> </li>
+      <li><a v-bind:href="`/activities/${activity[1].toString()}`"
+          alt="Click to view other areas offering this activity">{{ activity[0].toString() }}</a> </li>
       <!-- <li><a v-bind:href="`/activities/${activity.id}`">{{ thing }}</a> </li> -->
 
     </div>
@@ -106,7 +108,11 @@ export default {
       <button v-on:click="makeMap()">See the area on a map
       </button>
       <br>
-    <div id='map' style='width: auto; height: 850px;'></div>
+      <a v-bind:href="`/rec_areas`" class="btn btn-warning" role="button">Back to all Rec Areas</a>
+      <a v-bind:href="`/rec_areas/${this.recArea.id}`" class="btn btn-danger" role="button">Close Map</a>
+      <a v-bind:href="`/rec_areas/map`" class="btn btn-info" role="button">Map of all Rec Areas</a>
+    <div id='map' style='width: auto; height: 850px;'>
+    </div>
 
     </p>
 
