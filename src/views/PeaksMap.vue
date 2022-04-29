@@ -1,6 +1,12 @@
 <script>
 import axios from 'axios'
 import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
+
+
+
+
+
+
 export default {
   data: function () {
     return {

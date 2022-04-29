@@ -24,8 +24,6 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/peaks">Browse your missions</a>
               <a class="dropdown-item" href="/peaks/map">View Peaks on Map</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/logout">Log-out</a>
             </div>
           </li>
 
