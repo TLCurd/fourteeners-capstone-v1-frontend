@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import PeaksIndex from '../views/PeaksIndex.vue'
 import PeaksShow from '../views/PeaksShow.vue'
 import PeaksMap from '../views/PeaksMap.vue'
+import PeaksMap2 from '../views/PeaksMap2.vue'
 import RecAreasIndex from '../views/RecAreasIndex.vue'
 import RecAreasShow from '../views/RecAreasShow.vue'
 import RecAreasMap from '../views/RecAreasMap.vue'
@@ -32,6 +33,11 @@ const routes = [
     path: '/peaks/map',
     name: '14ers-map',
     component: PeaksMap
+  },
+  {
+    path: '/peaks/map2',
+    name: '14ers-map-2',
+    component: PeaksMap2
   },
   {
     path: '/rec_areas',

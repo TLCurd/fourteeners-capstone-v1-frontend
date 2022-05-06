@@ -5,6 +5,7 @@ import axios from "axios"
 import 'mapbox-gl/dist/mapbox-gl.css'
 import "bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
+// import * as turf from '@turf/turf'
 
 
 axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";

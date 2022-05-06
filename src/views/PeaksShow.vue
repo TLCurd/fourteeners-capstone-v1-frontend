@@ -37,8 +37,10 @@ export default {
         style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y', // style URL
         center: [this.peak.long, this.peak.lat], // starting position [lng, lat]
         zoom: 13, // starting zoom
-        pitch: 70
+        pitch: 30
       });
+      const x = new mapboxgl.LngLat(this.peak.long, this.peak.lat)
+      console.log(x.toBounds(10).toArray());
       map.on('load', () => {
         map.addSource('mapbox-dem', {
           'type': 'raster-dem',
@@ -113,7 +115,7 @@ export default {
     </button><br>
     <a v-bind:href="`/peaks`" class="btn btn-warning" role="button">Back to all 14ers</a>
     <a v-bind:href="`/peaks/${this.peak.id}`" class="btn btn-danger" role="button">Close Map</a>
-    <a v-bind:href="`/peak/map`" class="btn btn-info" role="button">Map of all 14ers</a>
+    <a v-bind:href="`/peaks/map`" class="btn btn-info" role="button">Map of all 14ers</a>
     <div id='map' style='width: auto; height: 850px;'></div>
 
   </div>

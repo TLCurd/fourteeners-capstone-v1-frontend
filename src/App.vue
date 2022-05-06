@@ -24,6 +24,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/peaks">Browse The 14ers</a>
               <a class="dropdown-item" href="/peaks/map">View Peaks on Map</a>
+              <a class="dropdown-item" href="/peaks/map2">Peaks Map Playground</a>
             </div>
           </li>
 
