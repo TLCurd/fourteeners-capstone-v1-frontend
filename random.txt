@@ -1,0 +1,21 @@
+<template>
+  <div class="home">
+    <h1>{{ message }}</h1>
+
+    <div v-for="recArea in recAreas" v-bind:key="recArea.id">
+      <!-- <img v-bind:src="recArea.photo"> -->
+      <h2>
+        Recreational Area: {{ recArea.name }}
+        <br>
+
+      </h2>
+      <p>About: {{ recArea.description }}</p>
+      <!-- <div v-for=" activity in recArea.activities">
+        <p>Activities: {{ activity }}</p>
+      </div> -->
+      <br>
+      <router-link v-bind:to="`/rec_areas/${recArea.id}`">Find out more about {{ recArea.name }}</router-link>
+      <hr>
+    </div>
+  </div>
+</template>

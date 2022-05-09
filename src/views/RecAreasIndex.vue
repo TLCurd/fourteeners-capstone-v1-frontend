@@ -5,7 +5,8 @@ export default {
   data: function () {
     return {
       message: "Colorado's Outdoor Recreation Areas",
-      recAreas: []
+      recAreas: [],
+      searchTerm: ""
     };
   },
   created: function () {
@@ -19,27 +20,51 @@ export default {
         this.recAreas = response.data
       })
     },
+    filterRecAreas: function () {
+      return this.recAreas.filter(recArea => {
+        var lowerName = recArea.name.toLowerCase();
+        var lowerSearchTerm = this.searchTerm.toLowerCase();
+        return lowerName.includes(lowerSearchTerm);
+      })
+    }
   },
 };
 </script>
 
 <template>
-  <div class="home">
+  <div class="rec-areas">
     <h1>{{ message }}</h1>
-    <div v-for="recArea in recAreas" v-bind:key="recArea.id">
-      <!-- <img v-bind:src="recArea.photo"> -->
-      <h2>
-        Recreational Area: {{ recArea.name }}
-        <br>
+    <div class="row">
+      <p>Search: <input type="text" v-model="searchTerm"> </p>
+      <div class="col-sm-4 " v-for="recArea in filterRecAreas()">
+        <div class="card">
+          <img v-bind:src="recArea.photo" class="img-fluid" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">{{ recArea.name }}</h4>
+            <h5>
+              Directions: {{ recArea.directions }}
+            </h5>
+          </div>
+          <b>Activities: </b>
+          <div v-for="activity in recArea.activities">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{ activity[0].toString() }}</li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <a v-bind:href="`/rec_areas/${recArea.id}`" class="btn btn-outline-dark" role="button">More information</a>
+          </div>
+        </div>
 
-      </h2>
-      <p>About: {{ recArea.description }}</p>
-      <!-- <div v-for=" activity in recArea.activities">
-        <p>Activities: {{ activity }}</p>
-      </div> -->
-      <br>
-      <router-link v-bind:to="`/rec_areas/${recArea.id}`">Find out more about {{ recArea.name }}</router-link>
-      <hr>
+
+
+
+        <!-- DIFFERENT ATTEMPTS FOR BUTTONS OUTSIDE OF BS CARD COMPONENT  -->
+        <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
+        <!-- <a v-bind:href="`/peaks/${peak.id}`" class="btn btn-outline-dark" role="button">More information</a> -->
+        <!-- <router-link v-bind:to="`/peaks/${peak.id}`">Find out more about {{ peak.name }}</router-link> -->
+        <hr>
+      </div>
     </div>
   </div>
 </template>

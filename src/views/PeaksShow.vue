@@ -36,17 +36,17 @@ export default {
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y', // style URL
         center: [this.peak.long, this.peak.lat], // starting position [lng, lat]
-        zoom: 13, // starting zoom
+        zoom: 15, // starting zoom
         pitch: 30
       });
-      const x = new mapboxgl.LngLat(this.peak.long, this.peak.lat)
-      console.log(x.toBounds(10).toArray());
+      // const x = new mapboxgl.LngLat(this.peak.long, this.peak.lat)
+      // console.log(x.toBounds(10).toArray());
       map.on('load', () => {
         map.addSource('mapbox-dem', {
           'type': 'raster-dem',
           'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
           'tileSize': 512,
-          'maxzoom': 14
+          'maxzoom': 16
         });
         // add the DEM source as a terrain layer with exaggerated height
         map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
