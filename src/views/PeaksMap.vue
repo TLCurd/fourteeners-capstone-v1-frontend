@@ -45,6 +45,16 @@ export default {
         pitch: 70
       });
 
+      const layerList = document.getElementById('menu');
+      const inputs = layerList.getElementsByTagName('input');
+
+      for (const input of inputs) {
+        input.onclick = (layer) => {
+          const layerId = layer.target.id;
+          map.setStyle('mapbox://styles/mapbox/' + layerId);
+        };
+      }
+
       map.on('load', () => {
         map.addSource('mapbox-dem', {
           'type': 'raster-dem',
@@ -66,6 +76,12 @@ export default {
           }
         });
       });
+      // map.on('click', (peak) => {
+      //   map.flyTo({
+      //     center: peak.coordinates,
+      //     zoom: 11
+      //   })
+      // })
 
       axios.get(`http://localhost:3000/peaks.json`).then(response => {
         console.log(response.data);
@@ -126,7 +142,23 @@ export default {
     <!-- <button v-on:click="makeMap()">Make Map</button> -->
     <div id='map' style='width: auto; height: 850px;'></div>
 
+    <div id="menu">
+      <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" checked="checked">
+      <!-- See a list of Mapbox-hosted public styles at -->
+      <!-- https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
+      <label for="satellite-v9">satellite</label>
+      <input id="light-v10" type="radio" name="rtoggle" value="light">
+      <label for="light-v10">light</label>
+      <input id="dark-v10" type="radio" name="rtoggle" value="dark">
+      <label for="dark-v10">dark</label>
+      <input id="streets-v11" type="radio" name="rtoggle" value="streets">
+      <label for="streets-v11">streets</label>
+      <input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors">
+      <label for="outdoors-v11">outdoors</label>
+    </div>
+
   </div>
+
 </template>
 
 <style>

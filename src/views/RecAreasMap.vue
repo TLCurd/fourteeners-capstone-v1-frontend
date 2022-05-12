@@ -70,7 +70,7 @@ export default {
           description = `<p> <a href="http://localhost:8080/rec_areas/${recArea.id}" <strong>${recArea.name}</strong></a> 
           </p>
           <br>
-          <b>Directions:</b> ${recArea.directions} `
+          <b>Activities:</b>`;
           const marker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -78,7 +78,10 @@ export default {
             .setLngLat([recArea.long, recArea.lat])
             .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
               .setHTML(
-                description
+                description,
+                // this.recArea.activities.forEach(activity => {
+                //   activity[0].toString()
+                // })
               )
             )
             .addTo(map)

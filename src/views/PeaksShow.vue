@@ -110,6 +110,12 @@ export default {
     <p>The difficulty of the trail is rated as {{ peak.difficulty }}.</p>
     <p>The amount of traffic this trail receives in a given year can vary from {{ peak.traffic_low }}, to
       {{ peak.traffic_high }}.</p>
+    <br>
+    <b>Reviews:</b>
+    <div v-for="review in peak.reviews">
+      {{ review.review }}
+      {{ review.user_name }}
+    </div>
     <hr>
     <button v-on:click="makeMap()">See the peak on a map
     </button><br>
