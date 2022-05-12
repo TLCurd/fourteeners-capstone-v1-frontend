@@ -1,6 +1,6 @@
 <script>
 import axios from "axios"
-import RecAreaIndex from "../views/ActivitiesIndex.vue"
+
 
 export default {
   data: function () {

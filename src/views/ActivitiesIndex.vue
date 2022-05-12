@@ -61,7 +61,15 @@ export default {
             <p>
               <b>Recreational Area: </b><a v-bind:href="`/rec_areas/${recArea.id}`">{{ recArea.name }}</a>
               <br>
-              <b>Contact information:</b> <i>{{ recArea.email }}</i> <b>|</b> <i>{{ recArea.phone_number }} </i>
+              <b>Contact information: </b>
+              <i v-if="recArea.email">{{ recArea.email }}</i>
+              <i v-else>Not available</i>
+              <b> | </b>
+              <i v-if="recArea.phone_number">{{ recArea.phone_number }}</i>
+              <i v-else>Not available</i>
+              <!-- <b>Contact information:</b> <i>{{ recArea.email }}</i> <b>|</b> <i>{{
+                recArea.phone_number
+            }} </i> -->
             </p>
             <hr>
           </div>
