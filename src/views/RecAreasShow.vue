@@ -88,7 +88,7 @@ export default {
 <template>
   <div class="rec-areas-show">
     <h1>{{ recArea.name }}</h1>
-    <br>
+
     <!-- <img v-bind:src="recArea.photo"> -->
     <hr>
     <p><b>About {{ recArea.name }}:</b> {{ recArea.description }}</p>
@@ -105,12 +105,21 @@ export default {
       <i>Phone Number:</i> {{ recArea.phone_number }} <br>
       <i>Email:</i> {{ recArea.email }}
       <hr>
-      <button v-on:click="makeMap()">See the area on a map
-      </button>
+    <h3><u>Reviews:</u></h3>
+    <div v-for="review in recArea.reviews">
+      <b>{{ review.user_name }}:
+        {{ review.review }}</b>
       <br>
-      <a v-bind:href="`/rec_areas`" class="btn btn-warning" role="button">Back to all Rec Areas</a>
-      <a v-bind:href="`/rec_areas/${this.recArea.id}`" class="btn btn-danger" role="button">Close Map</a>
-      <a v-bind:href="`/rec_areas/map`" class="btn btn-info" role="button">Map of all Rec Areas</a>
+      - - - - - - - - - - - - - - -
+
+    </div>
+    <hr>
+    <button v-on:click="makeMap()">See the area on a map
+    </button>
+    <br>
+    <a v-bind:href="`/rec_areas`" class="btn btn-warning" role="button">Back to all Rec Areas</a>
+    <a v-bind:href="`/rec_areas/${this.recArea.id}`" class="btn btn-danger" role="button">Close Map</a>
+    <a v-bind:href="`/rec_areas/map`" class="btn btn-info" role="button">Map of all Rec Areas</a>
     <div id='map' style='width: auto; height: 850px;'>
     </div>
 

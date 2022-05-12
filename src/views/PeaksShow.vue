@@ -111,10 +111,17 @@ export default {
     <p>The amount of traffic this trail receives in a given year can vary from {{ peak.traffic_low }}, to
       {{ peak.traffic_high }}.</p>
     <br>
-    <b>Reviews:</b>
+    <hr>
+    <b>
+      <h3><u>Reviews:</u></h3>
+      <br>
+    </b>
     <div v-for="review in peak.reviews">
-      {{ review.review }}
-      {{ review.user_name }}
+      <b>{{ review.user_name }}:
+        {{ review.review }}
+      </b>
+      <br>
+      - - - - - - - - - - - - -
     </div>
     <hr>
     <button v-on:click="makeMap()">See the peak on a map
