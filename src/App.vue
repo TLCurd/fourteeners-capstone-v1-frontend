@@ -50,6 +50,7 @@
               <a class="dropdown-item" href="/login"><b>Sign-in</b></a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/logout"><b>Log-out</b></a>
+              <a class="dropdown-item" v-bind:href="`/users/profile`"><b>Account Overview</b></a>
             </div>
           </li>
           <!-- <li class="nav-item">

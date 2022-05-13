@@ -12,6 +12,7 @@ import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import ActivitiesIndex from '../views/ActivitiesIndex.vue'
 import ActivitiesShow from '../views/ActivitiesShow.vue'
+import UsersShow from '../views/UsersShow.vue'
 
 const routes = [
   {
@@ -78,6 +79,11 @@ const routes = [
     path: "/logout", 
     name: "logout", 
     component: LogoutView
+  },
+  {
+    path: "/users/profile", 
+    name: "users-show", 
+    component: UsersShow
   },
   {
     path: '/about',

@@ -36,7 +36,7 @@ export default {
     <h1>{{ message }}</h1>
     <div class="row">
       <p>Search: <input type="text" v-model="searchTerm"> </p>
-      <div class="col-sm-4 " v-for="recArea in filterRecAreas()">
+      <div class="col-sm-4 " v-for="recArea in filterRecAreas()" v-bind:key="recArea.id">
         <div class="card">
           <img v-bind:src="recArea.photo" class="img-fluid" alt="...">
           <div class="card-body">
