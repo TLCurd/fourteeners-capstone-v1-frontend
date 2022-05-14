@@ -40,10 +40,14 @@ export default {
     <p>Email: {{ user.email }}</p>
     <p>Password: {{ user.password }}</p>
     <hr>
-    <p>Your Peak Reviews:
+    <p><b><u>Your 14er Reviews:</u></b>
     <div v-for="review in user.peak_reviews">
-      {{ review["peak_id"] }}
+      <!-- {{ review.name }} -->
+      <i>{{ review.name.name }}</i>:
       {{ review.review }}
+      - - - - - - - - - - - - - - - -
+      <br>
+
     </div>
     </p>
   </div>
