@@ -39,8 +39,7 @@ export default {
         zoom: 15, // starting zoom
         pitch: 30
       });
-      // const x = new mapboxgl.LngLat(this.peak.long, this.peak.lat)
-      // console.log(x.toBounds(10).toArray());
+
       map.on('load', () => {
         map.addSource('mapbox-dem', {
           'type': 'raster-dem',
@@ -48,10 +47,10 @@ export default {
           'tileSize': 512,
           'maxzoom': 16
         });
-        // add the DEM source as a terrain layer with exaggerated height
+
         map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
 
-        // add a sky layer that will show when the map is highly pitched
+
         map.addLayer({
           'id': 'sky',
           'type': 'sky',
@@ -71,7 +70,7 @@ export default {
           rotation: 0,
         })
           .setLngLat([this.peak.long, this.peak.lat])
-          .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
+          .setPopup(new mapboxgl.Popup({ offset: 25 })
             .setHTML(
               description
             )
@@ -91,13 +90,12 @@ export default {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y', // style URL
-        center: [this.peak.long, this.peak.lat], // starting position [lng, lat]
-        zoom: 11, // starting zoom
+        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        center: [this.peak.long, this.peak.lat],
+        zoom: 11,
         pitch: 30
       });
-      // const x = new mapboxgl.LngLat(this.peak.long, this.peak.lat)
-      // console.log(x.toBounds(10).toArray());
+
       map.on('load', () => {
         map.addSource('mapbox-dem', {
           'type': 'raster-dem',
@@ -105,10 +103,10 @@ export default {
           'tileSize': 512,
           'maxzoom': 16
         });
-        // add the DEM source as a terrain layer with exaggerated height
+
         map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
 
-        // add a sky layer that will show when the map is highly pitched
+
         map.addLayer({
           'id': 'sky',
           'type': 'sky',
@@ -143,7 +141,80 @@ export default {
             rotation: 0,
           })
             .setLngLat([recArea.long, recArea.lat])
-            .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
+            .setPopup(new mapboxgl.Popup({ offset: 25 })
+              .setHTML(
+                description
+              )
+            )
+            .addTo(map);
+        })
+
+      });
+      const nav = new mapboxgl.NavigationControl({
+        visualizePitch: true,
+        showZoom: true,
+        showCompass: true
+      });
+
+      map.addControl(nav, 'bottom-right');
+    },
+    showRecAreasWithinTwentyMiles: function () {
+      console.log('making map...');
+      mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
+      const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        center: [this.peak.long, this.peak.lat],
+        zoom: 10,
+        pitch: 30
+      });
+
+      map.on('load', () => {
+        map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 16
+        });
+
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+
+        map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+            'sky-type': 'atmosphere',
+            'sky-atmosphere-sun': [0.0, 0.0],
+            'sky-atmosphere-sun-intensity': 15
+          }
+        });
+      });
+      axios.get(`http://localhost:3000/peaks/${this.$route.params.id}.json`).then(response => {
+        console.log(response.data);
+        this.peak = response.data;
+        var description = `${this.peak.name}<br>Elevation: ${this.peak.elevation}`;
+        const peakMarker = new mapboxgl.Marker({
+          color: "red",
+          rotation: 0,
+        })
+          .setLngLat([this.peak.long, this.peak.lat])
+          .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
+            .setHTML(
+              description
+            )
+          )
+          .addTo(map);
+        var description = "";
+        this.peak.within_twenty_miles.forEach(recArea => {
+          console.log(this.peak.within_twenty_miles.count);
+          description = `<strong>${recArea.rec_area_name}</strong>`;
+          const recAreaMarker = new mapboxgl.Marker({
+            color: "blue",
+            rotation: 0,
+          })
+            .setLngLat([recArea.long, recArea.lat])
+            .setPopup(new mapboxgl.Popup({ offset: 25 })
               .setHTML(
                 description
               )
@@ -206,7 +277,8 @@ export default {
 
     <b>Checkout Nearby Recreation Areas:</b><br>
     <button v-on:click="showRecAreasWithinTenMiles()">Within 10 Miles
-    </button> | <br>
+    </button> | <button v-on:click="showRecAreasWithinTwentyMiles()">Within 20 Miles
+    </button> |<br>
     <br>
     <a v-bind:href="`/peaks`" class="btn btn-warning" role="button">Back to all 14ers</a>
     <a v-bind:href="`/peaks/${this.peak.id}`" class="btn btn-danger" role="button">Close Map</a>
