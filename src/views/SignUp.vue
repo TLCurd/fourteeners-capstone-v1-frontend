@@ -40,6 +40,10 @@ export default {
         <input type="email" v-model="newUserParams.email" />
       </div>
       <div>
+        <label>Profile Image URL:</label>
+        <input type="text" v-model="newUserParams.image_url" />
+      </div>
+      <div>
         <label>Password:</label>
         <input type="password" v-model="newUserParams.password" />
       </div>
