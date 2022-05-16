@@ -110,6 +110,8 @@ export default {
       <b>{{ review.user_name }}:
         {{ review.review }}</b>
       <br>
+      <i>Review Date: </i> {{ review.date }}
+      <br>
       - - - - - - - - - - - - - - -
 
     </div>

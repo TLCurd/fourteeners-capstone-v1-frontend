@@ -119,6 +119,8 @@ export default {
     <div v-for="review in peak.reviews">
       <b>{{ review.user_name }}:
         {{ review.review }}
+        <br>
+        <i>Review Date: </i> {{ review.date }}
       </b>
       <br>
       - - - - - - - - - - - - -
