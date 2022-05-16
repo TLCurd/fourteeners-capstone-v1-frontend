@@ -35,7 +35,7 @@ export default {
 
     <hr>
     <h4> <b>Information: </b></h4>
-    <img v-bind:src="user.image" v-bind:key="user.id" class="img-fluid img-thumbnail">
+    <img v-bind:src="user.image" v-bind:key="user.id" class="img-fluid img-thumbnail rounded-circle">
     <p>Name: {{ user.name }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Password: {{ user.password }}</p>
@@ -62,8 +62,8 @@ export default {
   </div>
 </template>
 
-<style>
-/* .img-fluid {
+<style scoped>
+.img-fluid {
   width: 300px
-} */
+}
 </style>

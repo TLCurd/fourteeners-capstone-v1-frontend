@@ -73,9 +73,11 @@ body {
   font-family: Futura, Trebuchet MS, Arial, sans-serif;
   background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
+</style>
 
-/* img {
-  width: 400px;
-  height: 400px
-} */
+<style scoped>
+.img-fluid {
+  width: auto;
+  height: auto
+}
 </style>
