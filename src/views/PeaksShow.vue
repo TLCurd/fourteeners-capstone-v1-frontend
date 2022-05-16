@@ -230,7 +230,227 @@ export default {
       });
 
       map.addControl(nav, 'bottom-right');
-    }
+    },
+    showRecAreasWithinThirtyMiles: function () {
+      console.log('making map...');
+      mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
+      const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        center: [this.peak.long, this.peak.lat],
+        zoom: 9,
+        pitch: 30
+      });
+
+      map.on('load', () => {
+        map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 16
+        });
+
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+
+        map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+            'sky-type': 'atmosphere',
+            'sky-atmosphere-sun': [0.0, 0.0],
+            'sky-atmosphere-sun-intensity': 15
+          }
+        });
+      });
+      axios.get(`http://localhost:3000/peaks/${this.$route.params.id}.json`).then(response => {
+        console.log(response.data);
+        this.peak = response.data;
+        var description = `${this.peak.name}<br>Elevation: ${this.peak.elevation}`;
+        const peakMarker = new mapboxgl.Marker({
+          color: "red",
+          rotation: 0,
+        })
+          .setLngLat([this.peak.long, this.peak.lat])
+          .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
+            .setHTML(
+              description
+            )
+          )
+          .addTo(map);
+        var description = "";
+        this.peak.within_thirty_miles.forEach(recArea => {
+          console.log(this.peak.within_thirty_miles.count);
+          description = `<strong>${recArea.rec_area_name}</strong>`;
+          const recAreaMarker = new mapboxgl.Marker({
+            color: "blue",
+            rotation: 0,
+          })
+            .setLngLat([recArea.long, recArea.lat])
+            .setPopup(new mapboxgl.Popup({ offset: 25 })
+              .setHTML(
+                description
+              )
+            )
+            .addTo(map);
+        })
+
+      });
+      const nav = new mapboxgl.NavigationControl({
+        visualizePitch: true,
+        showZoom: true,
+        showCompass: true
+      });
+
+      map.addControl(nav, 'bottom-right');
+    },
+    showRecAreasWithinFortyMiles: function () {
+      console.log('making map...');
+      mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
+      const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        center: [this.peak.long, this.peak.lat],
+        zoom: 8.5,
+        pitch: 30
+      });
+
+      map.on('load', () => {
+        map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 16
+        });
+
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+
+        map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+            'sky-type': 'atmosphere',
+            'sky-atmosphere-sun': [0.0, 0.0],
+            'sky-atmosphere-sun-intensity': 15
+          }
+        });
+      });
+      axios.get(`http://localhost:3000/peaks/${this.$route.params.id}.json`).then(response => {
+        console.log(response.data);
+        this.peak = response.data;
+        var description = `${this.peak.name}<br>Elevation: ${this.peak.elevation}`;
+        const peakMarker = new mapboxgl.Marker({
+          color: "red",
+          rotation: 0,
+        })
+          .setLngLat([this.peak.long, this.peak.lat])
+          .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
+            .setHTML(
+              description
+            )
+          )
+          .addTo(map);
+        var description = "";
+        this.peak.within_forty_miles.forEach(recArea => {
+          console.log(this.peak.within_forty_miles.count);
+          description = `<strong>${recArea.rec_area_name}</strong>`;
+          const recAreaMarker = new mapboxgl.Marker({
+            color: "blue",
+            rotation: 0,
+          })
+            .setLngLat([recArea.long, recArea.lat])
+            .setPopup(new mapboxgl.Popup({ offset: 25 })
+              .setHTML(
+                description
+              )
+            )
+            .addTo(map);
+        })
+
+      });
+      const nav = new mapboxgl.NavigationControl({
+        visualizePitch: true,
+        showZoom: true,
+        showCompass: true
+      });
+
+      map.addControl(nav, 'bottom-right');
+    },
+    showRecAreasWithinFiftyMiles: function () {
+      console.log('making map...');
+      mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
+      const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        center: [this.peak.long, this.peak.lat],
+        zoom: 8,
+        pitch: 30
+      });
+
+      map.on('load', () => {
+        map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 16
+        });
+
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+
+        map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+            'sky-type': 'atmosphere',
+            'sky-atmosphere-sun': [0.0, 0.0],
+            'sky-atmosphere-sun-intensity': 15
+          }
+        });
+      });
+      axios.get(`http://localhost:3000/peaks/${this.$route.params.id}.json`).then(response => {
+        console.log(response.data);
+        this.peak = response.data;
+        var description = `${this.peak.name}<br>Elevation: ${this.peak.elevation}`;
+        const peakMarker = new mapboxgl.Marker({
+          color: "red",
+          rotation: 0,
+        })
+          .setLngLat([this.peak.long, this.peak.lat])
+          .setPopup(new mapboxgl.Popup({ offset: 25 }) //add popups
+            .setHTML(
+              description
+            )
+          )
+          .addTo(map);
+        var description = "";
+        this.peak.within_fifty_miles.forEach(recArea => {
+          console.log(this.peak.within_fifty_miles.count);
+          description = `<strong>${recArea.rec_area_name}</strong>`;
+          const recAreaMarker = new mapboxgl.Marker({
+            color: "blue",
+            rotation: 0,
+          })
+            .setLngLat([recArea.long, recArea.lat])
+            .setPopup(new mapboxgl.Popup({ offset: 25 })
+              .setHTML(
+                description
+              )
+            )
+            .addTo(map);
+        })
+
+      });
+      const nav = new mapboxgl.NavigationControl({
+        visualizePitch: true,
+        showZoom: true,
+        showCompass: true
+      });
+
+      map.addControl(nav, 'bottom-right');
+    },
+
   },
 };
 </script>
@@ -274,16 +494,26 @@ export default {
     <button v-on:click="makeMap()">See the peak on a map
     </button>
     <br>
+    <br>
 
     <b>Checkout Nearby Recreation Areas:</b><br>
-    <button v-on:click="showRecAreasWithinTenMiles()">Within 10 Miles
-    </button> | <button v-on:click="showRecAreasWithinTwentyMiles()">Within 20 Miles
-    </button> |<br>
+    <div class="btn-group" role="group" aria-label="RecArea Distance Buttons">
+      <a v-on:click="showRecAreasWithinTenMiles()" class="btn btn-primary" role="button">Within 10 Miles
+      </a>
+      <a v-on:click="showRecAreasWithinTwentyMiles()" class="btn btn-primary" role="button">Within 20 Miles
+      </a>
+      <a v-on:click="showRecAreasWithinThirtyMiles()" class="btn btn-primary" role="button">Within 30 Miles
+      </a>
+      <a v-on:click="showRecAreasWithinFortyMiles()" class="btn btn-primary" role="button">Within 40 Miles
+      </a>
+      <a v-on:click="showRecAreasWithinFiftyMiles()" class="btn btn-primary" role="button">Within 50 Miles
+      </a>
+    </div><br>
     <br>
+    <div id='map' style='width: auto; height: 850px;'></div>
     <a v-bind:href="`/peaks`" class="btn btn-warning" role="button">Back to all 14ers</a>
     <a v-bind:href="`/peaks/${this.peak.id}`" class="btn btn-danger" role="button">Close Map</a>
     <a v-bind:href="`/peaks/map`" class="btn btn-info" role="button">Map of all 14ers</a>
-    <div id='map' style='width: auto; height: 850px;'></div>
 
   </div>
 </template>
