@@ -43,7 +43,7 @@ export default {
     <p><b><u>Your 14er Reviews:</u></b>
     <div v-for="review in user.peak_reviews">
       <!-- {{ review.name }} -->
-      <i>{{ review.name.name }} {{ review.created }}(Date review was posted)</i>:
+      <i>{{ review.peak_name }} {{ review.created }}(Date review was posted)</i>:
       {{ review.review }}<br>
       - - - - - - - - - - - - - - - -
       <br>
@@ -52,7 +52,7 @@ export default {
     <p><b><u>Your Recreational Area Reviews:</u></b>
     <div v-for="review in user.rec_area_reviews">
       <!-- {{ review.name }} -->
-      <i>{{ review.name.name }} {{ review.created }}(Date review was posted)</i>:
+      <i>{{ review.rec_area_name }} {{ review.created }}(Date review was posted)</i>:
       {{ review.review }}<br>
       - - - - - - - - - - - - - - - -
       <br>
