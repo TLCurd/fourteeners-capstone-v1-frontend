@@ -13,11 +13,12 @@ export default {
   },
   created: function () {
     console.log("in created...");
-    this.showPeak();
-    // this.makeMap()
+    this.showPeak()
   },
+
   mounted: function () {
     console.log("in mounted...");
+    // this.showPeak();
     // this.makeMap()
   },
   methods: {
@@ -135,7 +136,7 @@ export default {
         var description = "";
         this.peak.within_ten_miles.forEach(recArea => {
           console.log(this.peak.within_ten_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong>`;
+          description = `<a href="http://localhost:8080/rec_areas/${recArea.id}" <strong>${recArea.name}</strong></a> `;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -208,7 +209,7 @@ export default {
         var description = "";
         this.peak.within_twenty_miles.forEach(recArea => {
           console.log(this.peak.within_twenty_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong>`;
+          description = `<a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}" <strong>${recArea.rec_area_name}</strong></a> `;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -281,7 +282,7 @@ export default {
         var description = "";
         this.peak.within_thirty_miles.forEach(recArea => {
           console.log(this.peak.within_thirty_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong>`;
+          description = `<a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}" <strong>${recArea.rec_area_name}</strong></a> `;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -354,7 +355,7 @@ export default {
         var description = "";
         this.peak.within_forty_miles.forEach(recArea => {
           console.log(this.peak.within_forty_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong>`;
+          description = `<a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}" <strong>${recArea.rec_area_name}</strong></a> `;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -427,7 +428,7 @@ export default {
         var description = "";
         this.peak.within_fifty_miles.forEach(recArea => {
           console.log(this.peak.within_fifty_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong>`;
+          description = `<a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}" <strong>${recArea.rec_area_name}</strong></a> `;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -510,7 +511,7 @@ export default {
       </a>
     </div><br>
     <br>
-    <div id='map' style='width: auto; height: 850px;'></div>
+    <div id='map' style='width: auto; height: 825px;'></div>
     <a v-bind:href="`/peaks`" class="btn btn-warning" role="button">Back to all 14ers</a>
     <a v-bind:href="`/peaks/${this.peak.id}`" class="btn btn-danger" role="button">Close Map</a>
     <a v-bind:href="`/peaks/map`" class="btn btn-info" role="button">Map of all 14ers</a>
