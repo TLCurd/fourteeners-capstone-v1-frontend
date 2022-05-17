@@ -520,12 +520,12 @@ export default {
       </a>
     </div><br>
     <br>
-    <br>
+    <div id='map' style='width: auto; height: 800px;'>
+    </div>
+
     <a v-bind:href="`/rec_areas`" class="btn btn-warning" role="button">Back to all Rec Areas</a>
     <a v-bind:href="`/rec_areas/${this.recArea.id}`" class="btn btn-danger" role="button">Close Map</a>
     <a v-bind:href="`/rec_areas/map`" class="btn btn-info" role="button">Map of all Rec Areas</a>
-    <div id='map' style='width: auto; height: 850px;'>
-    </div>
 
     </p>
 
