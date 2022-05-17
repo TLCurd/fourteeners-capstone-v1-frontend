@@ -6,7 +6,9 @@ export default {
   data: function () {
     return {
       peak: {},
-      peak2: {}
+      peak2: {},
+      peakReviews: [],
+      newPeakReviewParams: {}
       // name: this.peak.name,
       // message: `All about ${name} `,
     };
@@ -451,7 +453,18 @@ export default {
 
       map.addControl(nav, 'bottom-right');
     },
-
+    createPeakReview: function () {
+      console.log("Creating peak review...");
+      var newPeakReviewParams = {
+        peak_id: this.peak.id,
+        review: this.newPeakReviewParams.review,
+      }
+      axios.post('http://localhost:3000/peak_reviews.json', newPeakReviewParams).then(response => {
+        console.log(response.data);
+        this.peakReviews.push(response.data);
+        this.newPeakReviewParams = {}
+      })
+    },
   },
 };
 </script>
@@ -491,6 +504,13 @@ export default {
       <br>
       - - - - - - - - - - - - -
     </div>
+    <hr>
+    <h4>Help the community out and add a review!</h4>
+    <p>
+      Enter your comments:
+      <input v-model="newPeakReviewParams.review" />
+    </p>
+    <button v-on:click="createPeakReview()">Add your review!</button>
     <hr>
     <button v-on:click="makeMap()">See the peak on a map
     </button>

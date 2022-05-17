@@ -5,6 +5,8 @@ import axios from "axios"
 import 'mapbox-gl/dist/mapbox-gl.css'
 import "bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
+import VueInputAutowidth from 'vue-input-autowidth'
+Vue.use(VueInputAutowidth)
 // import * as turf from '@turf/turf'
 
 
