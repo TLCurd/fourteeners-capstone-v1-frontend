@@ -459,11 +459,16 @@ export default {
         peak_id: this.peak.id,
         review: this.newPeakReviewParams.review,
       }
-      axios.post('http://localhost:3000/peak_reviews.json', newPeakReviewParams).then(response => {
+      axios.post('/peak_reviews.json', newPeakReviewParams).then(response => {
         console.log(response.data);
         this.peakReviews.push(response.data);
-        this.newPeakReviewParams = {}
+        this.newPeakReviewParams = {};
+        // this.$router.push(`/peaks/${this.peak.id}`)
+        window.location.reload()
       })
+        .catch((error) => {
+          console.log("peak reviews create error", error.response)
+        });
     },
   },
 };
