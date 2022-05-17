@@ -86,7 +86,7 @@ export default {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        style: 'mapbox://styles/mapbox/streets-v8',
         center: [this.recArea.long, this.recArea.lat],
         zoom: 11,
         pitch: 30
@@ -132,7 +132,10 @@ export default {
         var description = "";
         this.recArea.within_ten_miles.forEach(peak => {
           console.log(this.recArea.within_ten_miles.count);
-          description = `<a href="http://localhost:8080/peaks/${peak.id}" <strong>${peak.name}</strong></a> `;
+          description = `<strong>${peak.peak_name}</strong><a href="http://localhost:8080/peaks/${peak.peak_id}"><img src=${peak.peak_photo} class="img-fluid" target="_blank" title="Learn more about ${peak.peak_name}" > </a> <p>Located in the ${peak.peak_range} mountain range</p>
+          <p>Elevation:${peak.peak_elevation}</p>
+          <p>Official 14er: ${peak.peak_official_14er}</p>
+          <p>The summit is ${peak.peak_prominence} above the nearest peak.</p>`;
           const peakMarker = new mapboxgl.Marker({
             color: "red",
             rotation: 0,
@@ -160,7 +163,7 @@ export default {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        style: 'mapbox://styles/mapbox/streets-v8',
         center: [this.recArea.long, this.recArea.lat],
         zoom: 10,
         pitch: 30
@@ -206,7 +209,10 @@ export default {
         var description = "";
         this.recArea.within_twenty_miles.forEach(peak => {
           console.log(this.recArea.within_twenty_miles.count);
-          description = `<a href="http://localhost:8080/peaks/${peak.peak_id}" <strong>${peak.peak_name}</strong></a> `;
+          description = `<strong>${peak.peak_name}</strong><a href="http://localhost:8080/peaks/${peak.peak_id}"><img src=${peak.peak_photo} class="img-fluid" target="_blank" title="Learn more about ${peak.peak_name}" > </a> <p>Located in the ${peak.peak_range} mountain range</p>
+          <p>Elevation:${peak.peak_elevation}</p>
+          <p>Official 14er: ${peak.peak_official_14er}</p>
+          <p>The summit is ${peak.peak_prominence} above the nearest peak.</p>`;
           const peakMarker = new mapboxgl.Marker({
             color: "red",
             rotation: 0,
@@ -234,7 +240,7 @@ export default {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        style: 'mapbox://styles/mapbox/streets-v8',
         center: [this.recArea.long, this.recArea.lat],
         zoom: 9,
         pitch: 30
@@ -280,7 +286,10 @@ export default {
         var description = "";
         this.recArea.within_thirty_miles.forEach(peak => {
           console.log(this.recArea.within_thirty_miles.count);
-          description = `<a href="http://localhost:8080/peaks/${peak.peak_id}" <strong>${peak.peak_name}</strong></a> `;
+          description = `<strong>${peak.peak_name}</strong><a href="http://localhost:8080/peaks/${peak.peak_id}"><img src=${peak.peak_photo} class="img-fluid" target="_blank" title="Learn more about ${peak.peak_name}" > </a> <p>Located in the ${peak.peak_range} mountain range</p>
+          <p>Elevation:${peak.peak_elevation}</p>
+          <p>Official 14er: ${peak.peak_official_14er}</p>
+          <p>The summit is ${peak.peak_prominence} above the nearest peak.</p>`;
           const peakMarker = new mapboxgl.Marker({
             color: "red",
             rotation: 0,
@@ -308,7 +317,7 @@ export default {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        style: 'mapbox://styles/mapbox/streets-v8',
         center: [this.recArea.long, this.recArea.lat],
         zoom: 8.5,
         pitch: 30
@@ -354,7 +363,10 @@ export default {
         var description = "";
         this.recArea.within_forty_miles.forEach(peak => {
           console.log(this.recArea.within_forty_miles.count);
-          description = `<a href="http://localhost:8080/peaks/${peak.peak_id}" <strong>${peak.peak_name}</strong></a> `;
+          description = `<strong>${peak.peak_name}</strong><a href="http://localhost:8080/peaks/${peak.peak_id}"><img src=${peak.peak_photo} class="img-fluid" target="_blank" title="Learn more about ${peak.peak_name}" > </a> <p>Located in the ${peak.peak_range} mountain range</p>
+          <p>Elevation:${peak.peak_elevation}</p>
+          <p>Official 14er: ${peak.peak_official_14er}</p>
+          <p>The summit is ${peak.peak_prominence} above the nearest peak.</p>`;
           const peakMarker = new mapboxgl.Marker({
             color: "red",
             rotation: 0,
@@ -382,7 +394,7 @@ export default {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+        style: 'mapbox://styles/mapbox/streets-v8',
         center: [this.recArea.long, this.recArea.lat],
         zoom: 8,
         pitch: 30
@@ -428,7 +440,10 @@ export default {
         var description = "";
         this.recArea.within_fifty_miles.forEach(peak => {
           console.log(this.recArea.within_fifty_miles.count);
-          description = `<a href="http://localhost:8080/peaks/${peak.peak_id}" <strong>${peak.peak_name}</strong></a> `;
+          description = `<strong>${peak.peak_name}</strong><a href="http://localhost:8080/peaks/${peak.peak_id}"><img src=${peak.peak_photo} class="img-fluid" target="_blank" title="Learn more about ${peak.peak_name}" > </a> <p>Located in the ${peak.peak_range} mountain range</p>
+          <p>Elevation:${peak.peak_elevation}</p>
+          <p>Official 14er: ${peak.peak_official_14er}</p>
+          <p>The summit is ${peak.peak_prominence} above the nearest peak.</p>`;
           const peakMarker = new mapboxgl.Marker({
             color: "red",
             rotation: 0,

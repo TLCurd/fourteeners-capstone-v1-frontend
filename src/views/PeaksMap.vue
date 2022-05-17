@@ -42,7 +42,7 @@ export default {
         style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y', // style URL
         center: [-105.634722, 38.985833], // starting position [lng, lat]
         zoom: 6.5, // starting zoom
-        pitch: 70
+        pitch: 20
       });
 
       const layerList = document.getElementById('menu');
