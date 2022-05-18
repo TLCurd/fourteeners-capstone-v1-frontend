@@ -500,14 +500,16 @@ export default {
       <h3><u>Reviews:</u></h3>
       <br>
     </b>
-    <div v-for="review in peak.reviews">
-      <b>{{ review.user_name }}:
-        {{ review.review }}
+    <div class="container-peak-reviews">
+      <div v-for="review in peak.reviews">
+        <b>{{ review.user_name }}:
+          {{ review.review }}
+          <br>
+          <i>Review Date: </i> {{ review.date }}
+        </b>
         <br>
-        <i>Review Date: </i> {{ review.date }}
-      </b>
-      <br>
-      - - - - - - - - - - - - -
+        - - - - - - - - - - - - -
+      </div>
     </div>
     <hr>
     <h4>Help the community out and add a review!</h4>
@@ -557,5 +559,18 @@ export default {
 .mapboxgl-popup-content {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
+}
+
+.container-peak-reviews {
+  display: flex;
+  overflow: auto;
+  flex-wrap: wrap;
+  background-color: whitesmoke;
+  height: 300px;
+  padding: 10px;
+  width: auto;
+  margin-left: 20px;
+  margin-right: 0px;
+  justify-content: center;
 }
 </style>

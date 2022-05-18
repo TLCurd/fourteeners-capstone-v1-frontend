@@ -479,6 +479,7 @@ export default {
         this.recAreaReviews.push(response.data);
         this.newRecAreaReviewParams = {};
         // this.$router.push(`/peaks/${this.peak.id}`)
+        // this.$router.push(`/rec_areas/${this.$route.params.id}`)
         window.location.reload()
       })
         .catch((error) => {
@@ -500,7 +501,7 @@ export default {
     <div v-for=" activity in recArea.activities">
       <li><a v-bind:href="`/activities/${activity[1].toString()}`"
           alt="Click to view other areas offering this activity">{{ activity[0].toString() }}</a> </li>
-      <!-- <li><a v-bind:href="`/activities/${activity.id}`">{{ thing }}</a> </li> -->
+
 
     </div>
     </p>
@@ -510,13 +511,15 @@ export default {
       <i>Email:</i> {{ recArea.email }}
       <hr>
     <h3><u>Reviews:</u></h3>
-    <div v-for="review in recArea.reviews">
-      <b>{{ review.user_name }}:
-        {{ review.review }}</b>
-      <br>
-      <i>Review Date: </i> {{ review.date }}
-      <br>
-      - - - - - - - - - - - - - - -
+    <div class="container-rec-area-reviews">
+      <div v-for="review in recArea.reviews">
+        <b>{{ review.user_name }}:
+          {{ review.review }}</b>
+        <br>
+        <i>Review Date: </i> {{ review.date }}
+        <br>
+        - - - - - - - - - - - - - - -
+      </div>
     </div>
     <hr>
     <h4>Help the community out and add a review!</h4>
@@ -562,5 +565,20 @@ export default {
   </div>
 </template>
 
-    <style>
+    <style scoped>
+.container-rec-area-reviews {
+  display: flex;
+  overflow: auto;
+  flex-wrap: wrap;
+  background-color: whitesmoke;
+  height: 300px;
+  padding: 10px;
+  width: auto;
+  margin-left: 20px;
+  margin-right: 0px;
+  justify-content: center;
+
+
+
+}
 </style>
