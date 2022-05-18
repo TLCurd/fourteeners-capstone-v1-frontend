@@ -476,23 +476,27 @@ export default {
 
 <template>
   <div class="peaks-show">
-    <h1>Colorado 14er #{{ peak.id }} {{ peak.name }}</h1>
+    <h1><b><u>Colorado 14er #{{ peak.id }} {{ peak.name }}</u></b></h1>
     <br>
     <img v-bind:src="peak.photo" class="img-fluid">
 
 
     <hr>
-    <p>{{ peak.name }}</p>
-    <p>Located in the {{ peak.range }} mountain range</p>
-    <p>This trail tops out at {{ peak.elevation }}</p>
-    <p>Official: {{ peak.official_14er }}</p>
-    <p>The summit is {{ peak.prominence }} above the nearest peak.</p>
-    <p>Typically, the majority of hikers use the {{ peak.route }} to reach the summit. In doing so, you can expect to
-      hike a total of roughly {{ peak.distance }}, while gaining approximately {{ peak.elevation_gain }} over the
-      course
-      of the trail!</p>
-    <p>The difficulty of the trail is rated as {{ peak.difficulty }}.</p>
-    <p>The amount of traffic this trail receives in a given year can vary from {{ peak.traffic_low }}, to
+    <p>{{ peak.name }} is a Colorado 14er, located in the {{ peak.range }} mountain range. </p>
+    <p>Located in the {{ peak.range }} mountain range. Typically, the majority of hikers use the {{ peak.route }} to
+      reach the summit. In doing so, you can expect to hike a total of roughly {{ peak.distance }}, while gaining
+      approximately {{ peak.elevation_gain }} over the course of the trail!</p>
+    <p>When you reach the end of the trail, you'll be standing on the summit of a mountain peak that is situated at {{
+        peak.elevation
+    }} altitude! Expect to be breathing very thin air once you're standing atop this amazing
+      geographical feature. The views are sure to be stunning, with panoramic views in every direction for miles on end
+      - as you'll be roughly {{ peak.prominence }} above the nearest basin.</p>
+    <p>Is this an official Colorado 14er? {{ peak.official_14er }} (Y = yes; N = No)</p>
+    <p></p>
+    <p>The difficulty of the trail is rated as {{ peak.difficulty }}. Please choose trails that best suit your skillset!
+    </p>
+    <p>In terms of overall trail traffic, this trail receives, in a given year, hiker volume from {{ peak.traffic_low
+    }}, to
       {{ peak.traffic_high }}.</p>
     <br>
     <hr>
@@ -520,7 +524,7 @@ export default {
       <textarea v-model="newPeakReviewParams.review" class="form-control" id="peakReview" rows="3"
         placeholder="Enter your text here..."></textarea>
     </div>
-    <!-- <input v-model="newPeakReviewParams.review" /> -->
+
     </p>
     <button v-on:click="createPeakReview()">Add your review!</button>
     <hr>
