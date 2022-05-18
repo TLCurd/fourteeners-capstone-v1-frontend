@@ -6,6 +6,8 @@ export default {
   data: function () {
     return {
       recArea: {},
+      recAreaReviews: [],
+      newRecAreaReviewParams: {}
     };
   },
   created: function () {
@@ -466,6 +468,23 @@ export default {
 
       map.addControl(nav, 'bottom-right');
     },
+    createRecAreaReview: function () {
+      console.log("Creating rec area review...");
+      var newRecAreaReviewParams = {
+        rec_area_id: this.recArea.id,
+        review: this.newRecAreaReviewParams.review,
+      }
+      axios.post('/rec_area_reviews.json', newRecAreaReviewParams).then(response => {
+        console.log(response.data);
+        this.recAreaReviews.push(response.data);
+        this.newRecAreaReviewParams = {};
+        // this.$router.push(`/peaks/${this.peak.id}`)
+        window.location.reload()
+      })
+        .catch((error) => {
+          console.log("rec area reviews create error", error.response)
+        });
+    },
   },
 };
 </script>
@@ -498,8 +517,19 @@ export default {
       <i>Review Date: </i> {{ review.date }}
       <br>
       - - - - - - - - - - - - - - -
-
     </div>
+    <hr>
+    <h4>Help the community out and add a review!</h4>
+    <p>
+
+    <div class="mb-3">
+      <label for="recAreaReview" class="form-label">Enter your comments:</label>
+      <textarea v-model="newRecAreaReviewParams.review" class="form-control" id="recAreaReview" rows="3"
+        placeholder="Enter your text here..."></textarea>
+    </div>
+
+    </p>
+    <button v-on:click="createRecAreaReview()">Add your review!</button>
     <hr>
     <button v-on:click="makeMap()">See the area on a map
     </button>
