@@ -67,10 +67,9 @@ export default {
         var description = "";
         this.recAreas.forEach(recArea => {
           console.log(this.recAreas.count);
-          description = `<p> <a href="http://localhost:8080/rec_areas/${recArea.id}" <strong>${recArea.name}</strong></a> 
+          description = `<p><strong>${recArea.name}</strong> <a href="http://localhost:8080/rec_areas/${recArea.id}"><img src=${recArea.photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.name}" ></a> 
           </p>
-          <br>
-          <b>Activities:</b>`;
+          <br>`;
           const marker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,

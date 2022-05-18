@@ -494,18 +494,29 @@ export default {
   <div class="rec-areas-show">
     <h1>{{ recArea.name }}</h1>
 
-    <!-- <img v-bind:src="recArea.photo"> -->
+    <img v-bind:src="recArea.photo" class="img-fluid">
     <hr>
-    <p><b>About {{ recArea.name }}:</b> {{ recArea.description }}</p>
-    <p> <b>Activities: </b>
-    <div v-for=" activity in recArea.activities">
-      <li><a v-bind:href="`/activities/${activity[1].toString()}`"
-          alt="Click to view other areas offering this activity">{{ activity[0].toString() }}</a> </li>
+
+    <div class="card" style="width: auto;">
+      <div class="card-body">
+        <h4 class="card-title"><b>About {{ recArea.name }}</b></h4>
+
+        <p class="card-text">{{ recArea.description }}</p>
+        <p> <b>Activities: </b>
+        <div v-for=" activity in recArea.activities">
+          <li><a v-bind:href="`/activities/${activity[1].toString()}`"
+              alt="Click to view other areas offering this activity">{{ activity[0].toString() }}</a> </li>
 
 
+        </div>
+        </p>
+      </div>
     </div>
-    </p>
-    <p><b>Getting there:</b> {{ recArea.directions }}</p>
+
+    <p></p>
+
+    <p>
+    <h4>Getting there:</h4> {{ recArea.directions }}</p>
     <p><b>Contact Information:</b>
       <i>Phone Number:</i> {{ recArea.phone_number }} <br>
       <i>Email:</i> {{ recArea.email }}
@@ -571,14 +582,16 @@ export default {
   overflow: auto;
   flex-wrap: wrap;
   background-color: whitesmoke;
-  height: 300px;
+  height: 200px;
   padding: 10px;
   width: auto;
   margin-left: 20px;
   margin-right: 0px;
   justify-content: center;
+}
 
-
-
+.img-fluid {
+  width: auto;
+  height: 400px
 }
 </style>
