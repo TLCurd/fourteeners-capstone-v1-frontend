@@ -512,8 +512,13 @@ export default {
     <hr>
     <h4>Help the community out and add a review!</h4>
     <p>
-      Enter your comments:
-      <input v-model="newPeakReviewParams.review" />
+
+    <div class="mb-3">
+      <label for="peakReview" class="form-label">Enter your comments:</label>
+      <textarea v-model="newPeakReviewParams.review" class="form-control" id="peakReview" rows="3"
+        placeholder="Enter your text here..."></textarea>
+    </div>
+    <!-- <input v-model="newPeakReviewParams.review" /> -->
     </p>
     <button v-on:click="createPeakReview()">Add your review!</button>
     <hr>
