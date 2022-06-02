@@ -138,7 +138,7 @@ export default {
         var description = "";
         this.peak.within_ten_miles.forEach(recArea => {
           console.log(this.peak.within_ten_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from the mountain.</p>`;
+          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from ${this.peak.name}.</p>`;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -211,7 +211,7 @@ export default {
         var description = "";
         this.peak.within_twenty_miles.forEach(recArea => {
           console.log(this.peak.within_twenty_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from the mountain.</p>`;
+          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from ${this.peak.name}.</p>`;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -284,7 +284,7 @@ export default {
         var description = "";
         this.peak.within_thirty_miles.forEach(recArea => {
           console.log(this.peak.within_thirty_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from the mountain.</p>`;
+          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from ${this.peak.name}.</p>`;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -357,7 +357,7 @@ export default {
         var description = "";
         this.peak.within_forty_miles.forEach(recArea => {
           console.log(this.peak.within_forty_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from the mountain.</p>`;
+          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from ${this.peak.name}.</p>`;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
@@ -430,7 +430,7 @@ export default {
         var description = "";
         this.peak.within_fifty_miles.forEach(recArea => {
           console.log(this.peak.within_fifty_miles.count);
-          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from the mountain.</p>`;
+          description = `<strong>${recArea.rec_area_name}</strong><a href="http://localhost:8080/rec_areas/${recArea.rec_area_id}"><img src=${recArea.rec_area_photo} class="img-fluid" target="_blank" title="Learn more about ${recArea.rec_area_name}" > </a> <p>This recreation area is located ${recArea.distance} miles from ${this.peak.name}.</p>`;
           const recAreaMarker = new mapboxgl.Marker({
             color: "blue",
             rotation: 0,
